@@ -16,7 +16,9 @@ import {
   Instagram,
   Youtube,
 } from "lucide-react";
+
 import Logo from "../assets/images/logo.png";
+import { FaTiktok } from "react-icons/fa";
 
 const Layout = ({ children }) => {
   const [scrolled, setScrolled] = useState(false);
@@ -217,22 +219,32 @@ const Layout = ({ children }) => {
               </p>
               <div className="flex space-x-3">
                 <a
-                  href="#"
+                  href="https://facebook.com/username"
                   className="w-9 h-9 md:w-10 md:h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition-colors"
                 >
                   <Facebook size={16} className="md:w-5 md:h-5" />
                 </a>
+
                 <a
-                  href="#"
+                  href="https://instagram.com/pondok_nurul_yaqin"
                   className="w-9 h-9 md:w-10 md:h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition-colors"
                 >
                   <Instagram size={16} className="md:w-5 md:h-5" />
                 </a>
+
                 <a
-                  href="#"
+                  href="https://youtube.com/@NurulYaqinChannel77"
                   className="w-9 h-9 md:w-10 md:h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition-colors"
                 >
                   <Youtube size={16} className="md:w-5 md:h-5" />
+                </a>
+
+                {/* TikTok */}
+                <a
+                  href="https://tiktok.com/@tafakkur.ilahiyyah"
+                  className="w-9 h-9 md:w-10 md:h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition-colors"
+                >
+                  <FaTiktok className="w-4 h-4 md:w-5 md:h-5" />
                 </a>
               </div>
             </div>

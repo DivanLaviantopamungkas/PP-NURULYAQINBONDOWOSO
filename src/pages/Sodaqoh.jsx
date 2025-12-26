@@ -90,6 +90,11 @@ const Sodaqoh = () => {
       account: "987 654 321",
       name: "Pondok Pesantren Nurul Yaqin",
     },
+    {
+      bank: "Bank BRI",
+      account: "6194 0101 6458 533",
+      name: "Holid Batsal",
+    },
   ];
 
   const impactAreas = [

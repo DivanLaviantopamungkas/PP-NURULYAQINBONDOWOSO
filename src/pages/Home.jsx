@@ -124,11 +124,116 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
-          <ChevronDown className="text-white" size={32} />
-        </div>
+        {/* Panah dengan ukuran responsif */}
+        {/* <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-30 animate-bounce-slow">
+          <ChevronDown className="text-white w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" />
+        </div> */}
       </section>
 
+      {/* Video Profil Section */}
+      <section className="py-16 md:py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-10 md:mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+                Kajian Rutin Kyai & Ustadz
+              </h2>
+              <p className="text-gray-600 text-lg">
+                Simak kajian-kajian terbaru dari Kyai dan Ustadz di channel
+                YouTube resmi pondok kami
+              </p>
+            </div>
+
+            {/* Video Container */}
+            <div className="relative aspect-video rounded-xl md:rounded-2xl overflow-hidden shadow-lg md:shadow-2xl bg-gray-100">
+              {/* Thumbnail placeholder sebelum video dimuat */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="w-16 h-16 md:w-20 md:h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg
+                      className="w-8 h-8 md:w-10 md:h-10 text-primary"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                  <p className="text-gray-500">Memuat video kajian...</p>
+                </div>
+              </div>
+
+              {/* Video Kajian Terbaru */}
+              <iframe
+                className="absolute inset-0 w-full h-full"
+                src="https://www.youtube.com/embed/9Sb_eCBiT2I"
+                title="Kajian Pondok Pesantren Nurul Yaqin"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                loading="lazy"
+              />
+            </div>
+
+            {/* Video Description */}
+            <div className="mt-8 text-center">
+              <p className="text-gray-600 mb-8">
+                Channel YouTube kami berisi kajian-kajian rutin dari Kyai dan
+                Ustadz yang membahas berbagai ilmu agama, tafsir Al-Quran,
+                hadits, fiqih, dan pembinaan akhlak untuk santri dan masyarakat
+                umum.
+              </p>
+
+              {/* Jarak ditambah di sini */}
+              <div className="inline-flex items-center space-x-6 mb-8">
+                <span className="flex items-center text-gray-600">
+                  <svg
+                    className="w-5 h-5 mr-2 text-primary"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                  </svg>
+                  Kajian Rutin Mingguan
+                </span>
+                <span className="flex items-center text-gray-600">
+                  <svg
+                    className="w-5 h-5 mr-2 text-primary"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
+                  </svg>
+                  Update Setiap Minggu
+                </span>
+              </div>
+
+              {/* Jarak ditambah di sini juga */}
+              <div className="mb-6">
+                <a
+                  href="https://www.youtube.com/@NurulYaqinChannel77"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-6 py-3 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition-colors"
+                >
+                  <svg
+                    className="w-5 h-5 mr-2"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                  </svg>
+                  Subscribe untuk Kajian Terbaru
+                </a>
+              </div>
+
+              <p className="text-sm text-gray-500">
+                Jangan lupa aktifkan notifikasi untuk tidak ketinggalan kajian
+                terbaru!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
       {/* About Section */}
       <section className="py-20 bg-light">
         <div className="container mx-auto px-4">
@@ -205,7 +310,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* Programs Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
@@ -245,7 +349,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* Features Section */}
       <section className="py-20 bg-light-beige">
         <div className="container mx-auto px-4">
@@ -284,7 +387,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-primary to-secondary text-white">
         <div className="container mx-auto px-4 text-center">

@@ -124,9 +124,9 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
+        {/* <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
           <ChevronDown className="text-white" size={32} />
-        </div>
+        </div> */}
       </section>
 
       {/* About Section */}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   Search,
   Filter,
@@ -8,7 +8,13 @@ import {
   BookOpen,
   Award,
   Heart,
+  Play,
+  Pause,
+  Volume2,
+  VolumeX,
 } from "lucide-react";
+
+// Import gambar
 import Belajar from "../assets/images/gmb1.jpeg";
 import Kegiatan from "../assets/images/gmb4.jpeg";
 import Kegiatan2 from "../assets/images/gmb7.jpeg";
@@ -23,10 +29,20 @@ import Fasilitas4 from "../assets/images/fstl4.jpeg";
 import Fasilitas5 from "../assets/images/dpur1.jpeg";
 import Fasilitas6 from "../assets/images/dpur2.jpeg";
 
+// Import video dari assets
+import Hafalan from "../assets/videos/hafalan1.mp4";
+import Hafalan2 from "../assets/videos/falan2.mp4";
+import MakanSantri from "../assets/videos/makanbareng.mp4";
+
 const Galeri = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [itemType, setItemType] = useState(null); // 'image' atau 'video'
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
+  const videoRef = useRef(null);
 
+  // Update categories
   const categories = [
     { id: "all", label: "Semua", icon: Filter },
     { id: "learning", label: "Proses Belajar", icon: BookOpen },
@@ -35,9 +51,11 @@ const Galeri = () => {
     { id: "facility", label: "Fasilitas", icon: Users },
   ];
 
+  // Data gallery items (gambar)
   const galleryItems = [
     {
       id: 1,
+      type: "image",
       category: "learning",
       title: "Belajar Kitab Kuning",
       description:
@@ -46,6 +64,7 @@ const Galeri = () => {
     },
     {
       id: 2,
+      type: "image",
       category: "religious",
       title: "Shalat Berjamaah",
       description: "Kegiatan shalat berjamaah di mushalla pondok",
@@ -53,6 +72,7 @@ const Galeri = () => {
     },
     {
       id: 3,
+      type: "image",
       category: "religious",
       title: "Kajian Agama",
       description: "Sesi kajian agama Islam bersama ustadz",
@@ -60,6 +80,7 @@ const Galeri = () => {
     },
     {
       id: 4,
+      type: "image",
       category: "activities",
       title: "Kegiatan Ngaji",
       description: "Santri sedang mengikuti kegiatan ngaji bersama",
@@ -67,6 +88,7 @@ const Galeri = () => {
     },
     {
       id: 5,
+      type: "image",
       category: "religious",
       title: "Pembacaan Al-Quran",
       description: "Santri membaca Al-Quran dengan tartil",
@@ -74,6 +96,7 @@ const Galeri = () => {
     },
     {
       id: 6,
+      type: "image",
       category: "religious",
       title: "Shalat Berjamaah Santri",
       description: "Aktivitas shalat berjamaah di lingkungan pesantren",
@@ -81,6 +104,7 @@ const Galeri = () => {
     },
     {
       id: 7,
+      type: "image",
       category: "activities",
       title: "Foto Bersama Santri",
       description: "Kegiatan dokumentasi foto bersama seluruh santri",
@@ -88,6 +112,7 @@ const Galeri = () => {
     },
     {
       id: 8,
+      type: "image",
       category: "facility",
       title: "Fasilitas Pondok 1",
       description: "Salah satu fasilitas yang tersedia di pondok pesantren",
@@ -95,6 +120,7 @@ const Galeri = () => {
     },
     {
       id: 9,
+      type: "image",
       category: "facility",
       title: "Fasilitas Pondok 2",
       description: "Fasilitas pendukung kegiatan belajar mengajar",
@@ -102,6 +128,7 @@ const Galeri = () => {
     },
     {
       id: 10,
+      type: "image",
       category: "facility",
       title: "Fasilitas Pondok 3",
       description: "Ruang kegiatan santri di pondok pesantren",
@@ -109,6 +136,7 @@ const Galeri = () => {
     },
     {
       id: 11,
+      type: "image",
       category: "facility",
       title: "Fasilitas Pondok 4",
       description: "Area pendukung aktivitas santri sehari-hari",
@@ -116,6 +144,7 @@ const Galeri = () => {
     },
     {
       id: 12,
+      type: "image",
       category: "facility",
       title: "Dapur Pondok 1",
       description: "Area dapur untuk persiapan makanan santri",
@@ -123,6 +152,7 @@ const Galeri = () => {
     },
     {
       id: 13,
+      type: "image",
       category: "facility",
       title: "Dapur Pondok 2",
       description: "Fasilitas dapur bersama untuk kebutuhan santri",
@@ -130,10 +160,66 @@ const Galeri = () => {
     },
   ];
 
+  // Data video items
+  const videoItems = [
+    {
+      id: 14,
+      type: "video",
+      category: "learning",
+      title: "Proses Hafalan Al-Quran",
+      description: "Santri sedang menghafal Al-Quran dengan metode muraja'ah",
+      thumbnail: Belajar, // Gunakan gambar belajar sebagai thumbnail
+      video: Hafalan,
+      duration: "01:30",
+    },
+    {
+      id: 15,
+      type: "video",
+      category: "learning",
+      title: "Sesi Hafalan Bersama",
+      description: "Kegiatan hafalan Al-Quran bersama ustadz pembimbing",
+      thumbnail: Kegiatan, // Gunakan gambar kegiatan sebagai thumbnail
+      video: Hafalan2,
+      duration: "02:15",
+    },
+    {
+      id: 16,
+      type: "video",
+      category: "activities",
+      title: "Makan Bersama Santri",
+      description: "Kegiatan makan bersama di pondok pesantren",
+      thumbnail: Kegiatan2, // Gunakan gambar kegiatan sebagai thumbnail
+      video: MakanSantri,
+      duration: "01:45",
+    },
+  ];
+
+  // Gabungkan semua item
+  const allItems = [...galleryItems, ...videoItems];
+
   const filteredItems =
     selectedCategory === "all"
-      ? galleryItems
-      : galleryItems.filter((item) => item.category === selectedCategory);
+      ? allItems
+      : allItems.filter((item) => item.category === selectedCategory);
+
+  // Fungsi untuk kontrol video
+  const togglePlayPause = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
 
   return (
     <div className="pt-8">
@@ -161,7 +247,7 @@ const Galeri = () => {
               />
               <input
                 type="text"
-                placeholder="Cari foto atau kegiatan..."
+                placeholder="Cari foto atau video..."
                 className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
               />
             </div>
@@ -198,16 +284,55 @@ const Galeri = () => {
               <div
                 key={item.id}
                 className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer"
-                onClick={() => setSelectedImage(item)}
+                onClick={() => {
+                  setSelectedItem(item);
+                  setItemType(item.type);
+                  setIsPlaying(item.type === "video");
+                }}
               >
                 <div className="aspect-w-16 aspect-h-12 overflow-hidden">
                   <img
-                    src={item.image}
+                    src={item.image || item.thumbnail}
                     alt={item.title}
                     className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                   />
+
+                  {/* Overlay untuk video */}
+                  {item.type === "video" && (
+                    <>
+                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300" />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                          <Play
+                            size={32}
+                            className="text-white ml-1"
+                            fill="white"
+                          />
+                        </div>
+                      </div>
+                      {/* Video badge */}
+                      <div className="absolute top-4 right-4 bg-primary/90 text-white px-2 py-1 rounded text-xs font-semibold">
+                        VIDEO
+                      </div>
+                      {/* Duration badge */}
+                      <div className="absolute bottom-4 right-4 bg-black/70 text-white px-2 py-1 rounded text-xs">
+                        {item.duration}
+                      </div>
+                    </>
+                  )}
                 </div>
 
+                {/* Category Badge */}
+                <div className="absolute top-4 left-4">
+                  <span className="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-semibold flex items-center">
+                    {item.type === "video" && (
+                      <Play size={12} className="mr-1" />
+                    )}
+                    {categories.find((cat) => cat.id === item.category)?.label}
+                  </span>
+                </div>
+
+                {/* Content overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                     <h3 className="text-xl font-bold mb-2">{item.title}</h3>
@@ -216,18 +341,20 @@ const Galeri = () => {
                     </p>
                     <div className="flex items-center justify-end text-sm">
                       <span className="flex items-center bg-white/20 px-3 py-1 rounded-full">
-                        <ZoomIn size={14} className="mr-1" />
-                        Lihat
+                        {item.type === "video" ? (
+                          <>
+                            <Play size={14} className="mr-1" />
+                            Putar Video
+                          </>
+                        ) : (
+                          <>
+                            <ZoomIn size={14} className="mr-1" />
+                            Lihat Foto
+                          </>
+                        )}
                       </span>
                     </div>
                   </div>
-                </div>
-
-                {/* Category Badge */}
-                <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-semibold">
-                    {categories.find((cat) => cat.id === item.category)?.label}
-                  </span>
                 </div>
               </div>
             ))}
@@ -237,7 +364,7 @@ const Galeri = () => {
             <div className="text-center py-20">
               <Filter size={64} className="mx-auto text-gray-300 mb-6" />
               <h3 className="text-2xl font-bold text-gray-400 mb-2">
-                Tidak ada foto ditemukan
+                Tidak ada konten ditemukan
               </h3>
               <p className="text-gray-500">
                 Coba pilih kategori lain atau kata kunci berbeda
@@ -247,15 +374,15 @@ const Galeri = () => {
         </div>
       </section>
 
-      {/* Statistics */}
+      {/* Statistics - Diupdate dengan total video */}
       <section className="py-20 bg-gradient-to-br from-primary to-secondary text-white">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { label: "Foto Dokumentasi", value: "500+", icon: Award },
-              { label: "Kategori Album", value: "5", icon: Filter },
-              { label: "Tahun Berdiri", value: "2018", icon: BookOpen },
-              { label: "Kegiatan Rutin", value: "50+", icon: Heart },
+              { label: "Total Foto", value: galleryItems.length, icon: Award },
+              { label: "Total Video", value: videoItems.length, icon: Play },
+              { label: "Kategori", value: categories.length - 1, icon: Filter }, // -1 untuk exclude "all"
+              { label: "Aktivitas", value: "50+", icon: Heart },
             ].map((stat, index) => {
               const Icon = stat.icon;
               return (
@@ -277,77 +404,173 @@ const Galeri = () => {
       </section>
 
       {/* Lightbox Modal */}
-      {selectedImage && (
+      {selectedItem && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90">
-          <div className="relative max-w-4xl max-h-[90vh] w-full">
+          <div className="relative max-w-6xl max-h-[90vh] w-full">
             <button
-              onClick={() => setSelectedImage(null)}
-              className="absolute -top-12 right-0 text-white hover:text-accent transition-colors"
+              onClick={() => {
+                setSelectedItem(null);
+                setItemType(null);
+                setIsPlaying(true);
+                setIsMuted(false);
+              }}
+              className="absolute -top-12 right-0 text-white hover:text-accent transition-colors z-10"
             >
               <X size={32} />
             </button>
 
-            <div className="bg-white rounded-2xl overflow-hidden">
-              <div className="aspect-w-16 aspect-h-9">
-                <img
-                  src={selectedImage.image}
-                  alt={selectedImage.title}
-                  className="w-full h-auto max-h-[60vh] object-contain"
-                />
-              </div>
+            <div className="bg-black rounded-2xl overflow-hidden">
+              {itemType === "image" ? (
+                // Tampilan untuk gambar
+                <div className="aspect-w-16 aspect-h-9">
+                  <img
+                    src={selectedItem.image}
+                    alt={selectedItem.title}
+                    className="w-full h-auto max-h-[70vh] object-contain"
+                  />
+                </div>
+              ) : (
+                // Tampilan untuk video
+                <div className="relative">
+                  <video
+                    ref={videoRef}
+                    src={selectedItem.video}
+                    className="w-full max-h-[70vh] object-contain"
+                    autoPlay
+                    controls={false}
+                    loop
+                    muted={isMuted}
+                    onPlay={() => setIsPlaying(true)}
+                    onPause={() => setIsPlaying(false)}
+                    onEnded={() => setIsPlaying(false)}
+                  />
 
-              <div className="p-6">
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <h3 className="text-2xl font-bold mb-2">
-                      {selectedImage.title}
-                    </h3>
-                    <p className="text-gray-600">{selectedImage.description}</p>
+                  {/* Custom Video Controls */}
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 md:p-6">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-3 md:space-x-4">
+                        <button
+                          onClick={togglePlayPause}
+                          className="w-10 h-10 md:w-12 md:h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
+                        >
+                          {isPlaying ? (
+                            <Pause
+                              size={20}
+                              className="text-white md:w-6 md:h-6"
+                            />
+                          ) : (
+                            <Play
+                              size={20}
+                              className="text-white ml-1 md:w-6 md:h-6"
+                              fill="white"
+                            />
+                          )}
+                        </button>
+
+                        <button
+                          onClick={toggleMute}
+                          className="w-8 h-8 md:w-10 md:h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
+                        >
+                          {isMuted ? (
+                            <VolumeX
+                              size={16}
+                              className="text-white md:w-5 md:h-5"
+                            />
+                          ) : (
+                            <Volume2
+                              size={16}
+                              className="text-white md:w-5 md:h-5"
+                            />
+                          )}
+                        </button>
+
+                        <span className="text-white text-xs md:text-sm font-medium">
+                          {selectedItem.duration}
+                        </span>
+                      </div>
+
+                      <div className="hidden md:block text-white text-sm opacity-80">
+                        Klik ikon untuk mengontrol video
+                      </div>
+                    </div>
                   </div>
-                  <span className="px-3 py-1 bg-primary text-white rounded-full text-sm">
-                    {
-                      categories.find(
-                        (cat) => cat.id === selectedImage.category
-                      )?.label
-                    }
-                  </span>
+                </div>
+              )}
+
+              <div className="p-4 md:p-6 bg-white">
+                <div className="flex flex-col md:flex-row md:items-start justify-between mb-4 gap-3">
+                  <div className="flex-1">
+                    <h3 className="text-xl md:text-2xl font-bold mb-2 text-gray-800">
+                      {selectedItem.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm md:text-base">
+                      {selectedItem.description}
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="px-3 py-1 bg-primary text-white rounded-full text-xs md:text-sm font-semibold flex items-center">
+                      {selectedItem.type === "video" && (
+                        <Play size={12} className="mr-1" />
+                      )}
+                      {
+                        categories.find(
+                          (cat) => cat.id === selectedItem.category
+                        )?.label
+                      }
+                    </span>
+                    {selectedItem.type === "video" && (
+                      <span className="px-2 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-semibold">
+                        Video
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Navigation Buttons */}
-            <div className="flex justify-between mt-6">
-              <button
-                onClick={() => {
-                  const currentIndex = filteredItems.findIndex(
-                    (item) => item.id === selectedImage.id
-                  );
-                  const prevIndex =
-                    currentIndex > 0
-                      ? currentIndex - 1
-                      : filteredItems.length - 1;
-                  setSelectedImage(filteredItems[prevIndex]);
-                }}
-                className="px-6 py-3 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-colors"
-              >
-                Sebelumnya
-              </button>
-              <button
-                onClick={() => {
-                  const currentIndex = filteredItems.findIndex(
-                    (item) => item.id === selectedImage.id
-                  );
-                  const nextIndex =
-                    currentIndex < filteredItems.length - 1
-                      ? currentIndex + 1
-                      : 0;
-                  setSelectedImage(filteredItems[nextIndex]);
-                }}
-                className="px-6 py-3 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-colors"
-              >
-                Selanjutnya
-              </button>
-            </div>
+            {filteredItems.length > 1 && (
+              <div className="flex justify-between mt-6">
+                <button
+                  onClick={() => {
+                    const currentIndex = filteredItems.findIndex(
+                      (item) => item.id === selectedItem.id
+                    );
+                    const prevIndex =
+                      currentIndex > 0
+                        ? currentIndex - 1
+                        : filteredItems.length - 1;
+                    const prevItem = filteredItems[prevIndex];
+                    setSelectedItem(prevItem);
+                    setItemType(prevItem.type);
+                    setIsPlaying(prevItem.type === "video");
+                  }}
+                  className="px-4 py-2 md:px-6 md:py-3 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-colors flex items-center text-sm md:text-base"
+                >
+                  <Play size={16} className="mr-2 rotate-180" />
+                  Sebelumnya
+                </button>
+                <button
+                  onClick={() => {
+                    const currentIndex = filteredItems.findIndex(
+                      (item) => item.id === selectedItem.id
+                    );
+                    const nextIndex =
+                      currentIndex < filteredItems.length - 1
+                        ? currentIndex + 1
+                        : 0;
+                    const nextItem = filteredItems[nextIndex];
+                    setSelectedItem(nextItem);
+                    setItemType(nextItem.type);
+                    setIsPlaying(nextItem.type === "video");
+                  }}
+                  className="px-4 py-2 md:px-6 md:py-3 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-colors flex items-center text-sm md:text-base"
+                >
+                  Selanjutnya
+                  <Play size={16} className="ml-2" />
+                </button>
+              </div>
+            )}
           </div>
         </div>
       )}

@@ -123,11 +123,6 @@ const Home = () => {
             </div>
           </div>
         </div>
-
-        {/* Panah dengan ukuran responsif */}
-        {/* <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 z-30 animate-bounce-slow">
-          <ChevronDown className="text-white w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" />
-        </div> */}
       </section>
 
       {/* Video Profil Section */}

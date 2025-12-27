@@ -134,8 +134,9 @@ const Home = () => {
                 Kajian Rutin Kyai & Ustadz
               </h2>
               <p className="text-gray-600 text-lg">
-                Simak kajian-kajian terbaru dari Kyai dan Ustadz di channel
-                YouTube resmi pondok kami
+                Channel Youtube ini fokus pada Tafakkur diri, serta bimbingan
+                ruhani menuju kesadaran Ilahiyyah para santri dan masyarakat
+                umum dg metode dzikir Qalbu (Huu-Allah)
               </p>
             </div>
 

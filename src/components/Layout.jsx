@@ -283,7 +283,7 @@ const Layout = ({ children }) => {
                 <li className="flex items-center space-x-3">
                   <Phone className="text-accent" size={16} />
                   <span className="text-gray-300 text-sm md:text-base">
-                    (0331) 234-5678
+                    +62 8122-0336-418
                   </span>
                 </li>
                 <li className="flex items-center space-x-3">

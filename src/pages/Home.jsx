@@ -126,35 +126,37 @@ const Home = () => {
       </section>
 
       {/* Video Profil Section */}
-      <section className="py-16 md:py-20 bg-white">
-        <div className="container mx-auto px-4">
+      <section className="py-12 md:py-16 lg:py-20 bg-white">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-10 md:mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+            <div className="text-center mb-8 md:mb-10 lg:mb-12">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-3 md:mb-4">
                 Kajian Rutin Kyai & Ustadz
               </h2>
-              <p className="text-gray-600 text-lg">
-                Channel Youtube ini fokus pada Tafakkur diri, serta bimbingan
+              <p className="text-gray-600 text-sm sm:text-base md:text-lg max-w-3xl mx-auto px-2">
+                Channel YouTube ini fokus pada Tafakkur diri, serta bimbingan
                 ruhani menuju kesadaran Ilahiyyah para santri dan masyarakat
-                umum dg metode dzikir Qalbu (Huu-Allah)
+                umum dengan metode dzikir Qalbu (Huu-Allah)
               </p>
             </div>
 
             {/* Video Container */}
-            <div className="relative aspect-video rounded-xl md:rounded-2xl overflow-hidden shadow-lg md:shadow-2xl bg-gray-100">
-              {/* Thumbnail placeholder sebelum video dimuat */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-16 h-16 md:w-20 md:h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="relative aspect-video rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden shadow-lg bg-gray-100">
+              {/* Thumbnail placeholder */}
+              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100">
+                <div className="text-center p-4">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
                     <svg
-                      className="w-8 h-8 md:w-10 md:h-10 text-primary"
+                      className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 text-primary"
                       fill="currentColor"
                       viewBox="0 0 24 24"
                     >
                       <path d="M8 5v14l11-7z" />
                     </svg>
                   </div>
-                  <p className="text-gray-500">Memuat video kajian...</p>
+                  <p className="text-gray-500 text-sm md:text-base">
+                    Memuat video kajian...
+                  </p>
                 </div>
               </div>
 
@@ -171,19 +173,19 @@ const Home = () => {
             </div>
 
             {/* Video Description */}
-            <div className="mt-8 text-center">
-              <p className="text-gray-600 mb-8">
+            <div className="mt-6 md:mt-8 text-center">
+              <p className="text-gray-600 text-sm sm:text-base mb-6 md:mb-8 px-2 sm:px-0">
                 Channel YouTube kami berisi kajian-kajian rutin dari Kyai dan
                 Ustadz yang membahas berbagai ilmu agama, tafsir Al-Quran,
                 hadits, fiqih, dan pembinaan akhlak untuk santri dan masyarakat
                 umum.
               </p>
 
-              {/* Jarak ditambah di sini */}
-              <div className="inline-flex items-center space-x-6 mb-8">
-                <span className="flex items-center text-gray-600">
+              {/* Features */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-6 md:mb-8">
+                <span className="flex items-center text-gray-600 text-sm sm:text-base">
                   <svg
-                    className="w-5 h-5 mr-2 text-primary"
+                    className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-primary flex-shrink-0"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -191,9 +193,9 @@ const Home = () => {
                   </svg>
                   Kajian Rutin Mingguan
                 </span>
-                <span className="flex items-center text-gray-600">
+                <span className="flex items-center text-gray-600 text-sm sm:text-base">
                   <svg
-                    className="w-5 h-5 mr-2 text-primary"
+                    className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-primary flex-shrink-0"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -203,16 +205,16 @@ const Home = () => {
                 </span>
               </div>
 
-              {/* Jarak ditambah di sini juga */}
-              <div className="mb-6">
+              {/* Subscribe Button */}
+              <div className="mb-4 md:mb-6">
                 <a
                   href="https://www.youtube.com/@NurulYaqinChannel77"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center px-6 py-3 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition-colors"
+                  className="inline-flex items-center px-4 py-2.5 sm:px-5 sm:py-3 bg-red-600 text-white rounded-lg font-semibold text-sm sm:text-base hover:bg-red-700 transition-colors active:scale-95"
                 >
                   <svg
-                    className="w-5 h-5 mr-2"
+                    className="w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -222,7 +224,7 @@ const Home = () => {
                 </a>
               </div>
 
-              <p className="text-sm text-gray-500">
+              <p className="text-xs sm:text-sm text-gray-500 px-4">
                 Jangan lupa aktifkan notifikasi untuk tidak ketinggalan kajian
                 terbaru!
               </p>
@@ -230,77 +232,108 @@ const Home = () => {
           </div>
         </div>
       </section>
+
       {/* About Section */}
-      <section className="py-20 bg-light">
-        <div className="container mx-auto px-4">
-          <div className="section-title">
-            <h2>Tentang Pondok Pesantren Nurul Yaqin</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+      <section className="py-12 md:py-16 lg:py-20 bg-light">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="section-title text-center mb-10 md:mb-12 lg:mb-14">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-3 md:mb-4">
+              Tentang Pondok Pesantren Nurul Yaqin
+            </h2>
+            <p className="text-gray-600 text-sm sm:text-base md:text-lg max-w-3xl mx-auto px-4 sm:px-0">
               Berawal dari keinginan wali santri, berkembang menjadi lembaga
               pendidikan yang konsen mengembangkan potensi generasi Islam
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-12 items-center">
+            {/* Left Content */}
             <div
               ref={ref}
-              className={`space-y-6 ${
+              className={`space-y-4 md:space-y-6 ${
                 inView ? "animate-slide-up" : "opacity-0"
               }`}
             >
-              <h3 className="text-3xl font-bold text-primary">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary">
                 Latar Belakang
               </h3>
-              <p className="text-lg text-gray-600">
+              <p className="text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed">
                 Pondok Pesantren Nurul Yaqin didirikan pada 17 Februari 2018
                 dengan dana swadaya dari para simpatisan dan calon wali santri.
                 Berawal dari rumah tinggal pengasuh yang direhab menjadi lantai
                 dua, kini telah berkembang dengan asrama santri putra dan putri.
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-                <div className="card">
-                  <div className="w-14 h-14 bg-light-beige rounded-full flex items-center justify-center mb-4">
-                    <Award className="text-primary" size={24} />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mt-6 md:mt-8">
+                {/* Visi Card */}
+                <div className="card p-4 md:p-5 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                  <div className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 bg-light-beige rounded-full flex items-center justify-center mb-3 md:mb-4">
+                    <Award className="text-primary w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7" />
                   </div>
-                  <h4 className="text-xl font-bold mb-3">Visi</h4>
-                  <p className="text-gray-600">
-                    Mewujudkan insan yang memiliki <em>kesadaran ilahiah</em>{" "}
+                  <h4 className="text-base md:text-lg lg:text-xl font-bold mb-2 md:mb-3 text-gray-800">
+                    Visi
+                  </h4>
+                  <p className="text-gray-600 text-xs sm:text-sm md:text-base">
+                    Mewujudkan insan yang memiliki{" "}
+                    <em className="text-primary font-semibold">
+                      kesadaran ilahiah
+                    </em>{" "}
                     untuk mengembalikan esensi nilai-nilai mulia agama.
                   </p>
                 </div>
 
-                <div className="card">
-                  <div className="w-14 h-14 bg-light-beige rounded-full flex items-center justify-center mb-4">
-                    <GraduationCap className="text-primary" size={24} />
+                {/* Misi Card */}
+                <div className="card p-4 md:p-5 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                  <div className="w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 bg-light-beige rounded-full flex items-center justify-center mb-3 md:mb-4">
+                    <GraduationCap className="text-primary w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7" />
                   </div>
-                  <h4 className="text-xl font-bold mb-3">Misi</h4>
-                  <ul className="space-y-2 text-gray-600">
-                    <li>
-                      • Mencetak generasi Islam high class dan limited edition
+                  <h4 className="text-base md:text-lg lg:text-xl font-bold mb-2 md:mb-3 text-gray-800">
+                    Misi
+                  </h4>
+                  <ul className="space-y-1.5 md:space-y-2 text-gray-600 text-xs sm:text-sm md:text-base">
+                    <li className="flex items-start gap-2">
+                      <span className="text-primary mt-1">•</span>
+                      <span>
+                        Mencetak generasi Islam high class dan limited edition
+                      </span>
                     </li>
-                    <li>
-                      • Mengembangkan model internalisasi nilai-nilai Islam
-                      integrative
+                    <li className="flex items-start gap-2">
+                      <span className="text-primary mt-1">•</span>
+                      <span>
+                        Mengembangkan model internalisasi nilai-nilai Islam
+                        integrative
+                      </span>
                     </li>
-                    <li>• Membentuk santri dengan kesadaran ruhani</li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-primary mt-1">•</span>
+                      <span>Membentuk santri dengan kesadaran ruhani</span>
+                    </li>
                   </ul>
                 </div>
               </div>
             </div>
 
+            {/* Right Image */}
             <div
-              className={`relative ${
+              className={`relative order-first lg:order-last ${
                 inView ? "animate-slide-up animation-delay-200" : "opacity-0"
               }`}
             >
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <div className="relative rounded-lg md:rounded-xl lg:rounded-2xl overflow-hidden shadow-lg md:shadow-xl lg:shadow-2xl">
                 <img
                   src={PondokImg}
                   alt="Pondok Pesantren Nurul Yaqin"
-                  className="w-full h-auto"
+                  className="w-full h-auto aspect-[4/3] md:aspect-[3/2] object-cover"
                 />
-                <div className="absolute -bottom-6 -right-6 w-24 h-24 border-4 border-accent rounded-xl"></div>
+                <div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 border-3 md:border-4 border-accent rounded-lg md:rounded-xl"></div>
+              </div>
+
+              {/* Optional: Add decorative element for mobile */}
+              <div className="mt-4 md:mt-0">
+                <p className="text-xs sm:text-sm text-gray-500 text-center md:text-left italic">
+                  Pesantren yang terus berkembang dengan visi dan misi yang
+                  jelas
+                </p>
               </div>
             </div>
           </div>

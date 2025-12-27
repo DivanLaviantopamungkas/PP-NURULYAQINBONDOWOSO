@@ -542,7 +542,7 @@ const Sodaqoh = () => {
 
                   <button
                     type="submit"
-                    className="w-full py-4 bg-gradient-to-r from-primary to-accent text-white rounded-lg font-bold text-lg hover:opacity-90 transition-opacity flex items-center justify-center"
+                    className="w-full py-3 px-4 bg-gradient-to-r from-primary to-accent text-white rounded-lg font-semibold text-sm md:text-base hover:opacity-90 transition-all flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed mx-auto max-w-md"
                     disabled={
                       !donationAmount ||
                       !formData.name ||
@@ -550,15 +550,27 @@ const Sodaqoh = () => {
                       !formData.phone
                     }
                   >
-                    <MessageCircle size={24} className="mr-3" />
-                    Kirim Konfirmasi via WhatsApp
+                    <MessageCircle className="w-4 h-4 md:w-5 md:h-5" />
+                    <span>Kirim Konfirmasi via WhatsApp</span>
                   </button>
 
                   <div className="text-center text-sm text-gray-600">
-                    <p className="flex items-center justify-center">
-                      <Phone size={16} className="mr-2" />
-                      Konfirmasi akan dikirim ke: +62 812-2033-6418
-                    </p>
+                    <div className="grid grid-cols-1 sm:flex sm:items-center sm:justify-center sm:gap-2">
+                      <div className="flex items-center justify-center gap-2">
+                        <Phone size={16} className="shrink-0" />
+                        <span className="sm:hidden">
+                          Konfirmasi akan dikirim ke:
+                        </span>
+                      </div>
+                      <div>
+                        <span className="hidden sm:inline">
+                          Konfirmasi akan dikirim ke:{" "}
+                        </span>
+                        <span className="font-medium whitespace-nowrap">
+                          +62 812-2033-6418
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </form>
               </div>
